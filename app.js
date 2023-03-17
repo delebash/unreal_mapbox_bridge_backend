@@ -30,12 +30,12 @@ async function run() {
             let tiles = []
             let tile = {}
             let guid = uuidv4();
-            let destCombined = path.resolve('/var/task/tmp/' + 'combined' + '_' + guid + '.png');
+            let destCombined = path.resolve('./var/task/tmp/' + 'combined' + '_' + guid + '.png');
             for (let file of files) {
                 tile = {}
                 let array = JSON.parse("[" + file.buffer + "]");
                 let guid = uuidv4();
-                let outputFilePath = path.resolve('/var/task/tmp/' + guid + +'_' + file.name)
+                let outputFilePath = path.resolve('./var/task/tmp/' + guid + +'_' + file.name)
 
                 await sharp(Buffer.from(array), {}).toFile(outputFilePath)
 
