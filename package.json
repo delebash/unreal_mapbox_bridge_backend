@@ -1,0 +1,24 @@
+{
+  "name": "unreal_mapbox_bridge_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Daniel Elebash",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "combine-tiles": "^2.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-rescue": "^1.2.0",
+    "sharp": "^0.31.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
