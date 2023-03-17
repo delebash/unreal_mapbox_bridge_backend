@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 async function run() {
 
 
-    app.post('/', rescue(async (req, res, next) => {
+    app.post('/backend', rescue(async (req, res, next) => {
         let files = await req.body
 
         try {
