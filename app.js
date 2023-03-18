@@ -12,8 +12,8 @@ const {v4: uuidv4} = require('uuid');
 app.use(cors());
 const port = 3000
 
-app.use(bodyParser.json({limit: '500mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
+app.use(bodyParser.json({limit: '20000mb'}));
+app.use(bodyParser.urlencoded({extended: true}))
 
 async function run() {
 
