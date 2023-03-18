@@ -1,7 +1,7 @@
 const express = require('express');
 const rescue = require('express-rescue')
 const cors = require('cors')
-const combineTiles = require('combine-tiles')
+const combineTiles = require('./combine-tiles.js')
 const sharp = require('sharp');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -22,59 +22,22 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 
 async function run() {
 
-
     app.post('/backend', rescue(async (req, res, next) => {
-        let files = await req.body
+        let tiles = await req.body
 
         try {
-            let tiles = []
-            let tile = {}
-            let guid = uuidv4();
-            let destCombined = path.resolve('./tmp/' + 'combined' + '_' + guid + '.png');
-            for (let file of files) {
-                tile = {}
-                let array = JSON.parse("[" + file.buffer + "]");
-                let guid = uuidv4();
-                let outputFilePath = path.resolve('./tmp/' + guid + +'_' + file.name)
-
-                await sharp(Buffer.from(array), {}).toFile(outputFilePath)
-
-                tile.x = file.x
-                tile.y = file.y
-                tile.file = outputFilePath
-                tiles.push(tile)
+            for (let tile of tiles) {
+                tile.buffer = await sharp(Buffer.from(JSON.parse("[" + tile.buffer + "]")), {}).toBuffer()
             }
-
             const size = 512
-            console.log(tiles)
-            await combineTiles(tiles, size, size, destCombined)
-
-            const imageBuffer = fs.readFileSync(
-                path.resolve(destCombined),
-            )
+            let imageBuffer = await combineTiles(tiles, size, size)
 
             res.send(Buffer.from(imageBuffer))
             res.end();
 
-            for (let tile of tiles) {
-                fs.unlink(tile.file, function (err) {
-                    if (err) throw err;
-                    // if no error, file has been deleted successfully
-                    console.log('File deleted!');
-                });
-            }
-
-            fs.unlink(destCombined, function (err) {
-                if (err) throw err;
-                // if no error, file has been deleted successfully
-                console.log('File deleted!');
-            })
-
         } catch (e) {
             console.log(e)
         }
-
-
     }))
 
     app.use((err, req, res, next) => {
