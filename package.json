@@ -2,9 +2,11 @@
   "name": "unreal_mapbox_bridge_backend",
   "version": "1.0.0",
   "description": "",
+  "bin": "app.js",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "pkg -t win . --out-path dist"
   },
   "keywords": [],
   "author": "Daniel Elebash",
@@ -17,5 +19,8 @@
     "lodash": "^4.17.21",
     "sharp": "^0.31.3",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
   }
 }
