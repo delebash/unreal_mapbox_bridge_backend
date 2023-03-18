@@ -2,16 +2,9 @@
 
 #### Use real world heightmap data from Mapbox and automatically convert it to an Unreal heightmap image
 
-# Check out the demo running live [here](https://terrain.justgeektechs.com/)
+# Check out the front end demo running live  [here](https://terrain.justgeektechs.com/)
+
+This backend server is only needed if you are going to us the tile stitching feature of MapboxBridge.  
 
 
-# Plugin version for Unreal Egine 5 <a href="https://github.com/delebash/UnrealMapboxBridgePlugin" target="_blank">UnrealMapboxBridge</a>
-
-Get Help here <a href="https://discord.gg/2WkHWNDf8q" target="_blank">Discord Server</a>
-
-For what is coming next check the **<a href="https://trello.com/b/7jXYlo13/unreal-mapbox-bridge" target="_blank">RoadMap</a>**
-
-Other free Unreal projects
-
-https://github.com/delebash/unreal_vault_organizer
-
+You can download the repo and either run the standalone server included in the dist folder or install node and run npm install and then npm start.
