@@ -6,7 +6,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "build": "pkg -t win . --out-path dist"
+    "build": "ncc build app.js -o dist",
+    "compile": "npx pkg -t win ./dist/index.js -o dist/unreal_mapbor_bridge_backend",
+    "dist": "npm run build & npm run compile"
   },
   "keywords": [],
   "author": "Daniel Elebash",
@@ -19,8 +21,5 @@
     "lodash": "^4.17.21",
     "sharp": "^0.31.3",
     "uuid": "^9.0.0"
-  },
-  "devDependencies": {
-    "pkg": "^5.8.1"
   }
 }
