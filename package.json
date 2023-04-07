@@ -1,6 +1,6 @@
 {
   "name": "unreal_mapbox_bridge_backend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "bin": "app.js",
   "main": "app.js",

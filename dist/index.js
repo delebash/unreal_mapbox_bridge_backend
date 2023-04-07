@@ -36628,7 +36628,9 @@ async function run() {
             console.log(e)
         }
     }))
-
+    app.get('/backend', (req, res) => {
+        res.send("Server is running")
+    })
     app.use((err, req, res, next) => {
         res.send('error')
     })
